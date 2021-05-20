@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj": {}
+    "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj": {}
   },
   "projects": {
-    "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj": {
+    "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj",
+        "projectUniqueName": "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj",
         "projectName": "MBH.Common",
-        "projectPath": "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj",
+        "projectPath": "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj",
         "packagesPath": "C:\\Users\\tanvik\\.nuget\\packages\\",
-        "outputPath": "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\obj\\",
+        "outputPath": "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "e:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\NuGet.Config",
+          "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\NuGet.Config",
           "C:\\Users\\tanvik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"

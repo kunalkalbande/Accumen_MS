@@ -10,6 +10,7 @@ using MBH.LabTest.Service.Dtos;
 using MBH.LabTest.Service.Entities;
 using MBH.Common;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Http;
 
 namespace MBH.LabTest.Service.Controllers
 {
@@ -20,16 +21,13 @@ namespace MBH.LabTest.Service.Controllers
         private readonly IRepository<LabTestItem> itemsRepository;
         private readonly IPublishEndpoint publishEndpoint;
         private readonly IRepository<PatientItem> patientRepository;
-        public LabTestController(IServiceProvider serviceProvider,  IRepository<LabTestItem> itemsRepository,IRepository<PatientItem> patientRepository, IPublishEndpoint publishEndpoint)
+        public LabTestController(IHttpContextAccessor httpContextAccessor,IRepository<LabTestItem> itemsRepository,IRepository<PatientItem> patientRepository, IPublishEndpoint publishEndpoint)
         {
-            // var s=serviceProvider.GetServices<IRepository<LabTestItem>>();
-            // var configuration = serviceProvider.GetService<IConfiguration>();
-            // var PrefferedDb = configuration.GetSection("PrefferedDb").Get<string>();
-            // var repo=s.Where(r=>r.Name==PrefferedDb).FirstOrDefault();
-            // if(repo!=null)
-            // this.itemsRepository=repo;
-            // else
-            this.itemsRepository = itemsRepository;
+            var item = httpContextAccessor.HttpContext.Items["itemsRepository"];
+            if (item != null)
+                this.itemsRepository = (IRepository<LabTestItem>)item;
+            else
+                this.itemsRepository = itemsRepository;
             this.publishEndpoint = publishEndpoint;
             this.patientRepository=patientRepository;
         }

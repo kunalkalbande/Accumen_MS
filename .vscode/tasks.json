@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MBH.Patient/src/MBH.Patient.Service/MBH.Patient.Service.csproj",
+                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MBH.Patient/src/MBH.Patient.Service/MBH.Patient.Service.csproj",
+                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/MBH.Patient/src/MBH.Patient.Service/MBH.Patient.Service.csproj",
+                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

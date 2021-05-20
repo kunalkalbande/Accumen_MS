@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "MBH.Common/1.0.1": {
+      "MBH.Common/1.0.0": {
         "dependencies": {
           "AWSSDK.DynamoDBv2": "3.7.0.18",
           "MassTransit.AspNetCore": "7.1.4",
@@ -1043,7 +1043,7 @@
     }
   },
   "libraries": {
-    "MBH.Common/1.0.1": {
+    "MBH.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

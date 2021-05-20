@@ -10,6 +10,7 @@ using MBH.Common.DynamoDB;
 using MBH.Common.Settings;
 using MBH.Common.MongoDB;
 using Microsoft.AspNetCore.Http;
+using MBH.LabTest.Service.Middleware;
 
 namespace MBH.LabTest.Service
 {
@@ -32,10 +33,11 @@ namespace MBH.LabTest.Service
              services.AddMongo()
                    .AddMongoRepository<LabTestItem>("labTestItems")
                      .AddMongoRepository<PatientItem>("patientLabTestItems")
+                     .AddDynamo()
+                    .AddDynamoRepository<LabTestItem>()
                     .AddMassTransitWithRabbitMq();
                     services.AddHttpContextAccessor();
-            // services.AddDynamo()
-            // .AddDynamoRepository<LabTestItem>()
+            
             //.AddMassTransitWithRabbitMq();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
                    
@@ -67,7 +69,7 @@ namespace MBH.LabTest.Service
 
             app.UseAuthorization();
             
-
+            app.UseTenant();
             app.UseEndpoints(endpoints =>
             {
                 

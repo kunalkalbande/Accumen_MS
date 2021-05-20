@@ -5,17 +5,18 @@ using Amazon.DynamoDBv2.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MBH.Common.Settings;
+using System;
 
 namespace MBH.Common.DynamoDB
 {
     public static class Extensions
     {
-        public static  IServiceCollection AddDynamo(this IServiceCollection services,IConfiguration configuration)
+        public static  IServiceCollection AddDynamo(this IServiceCollection services)
         {
          
             services.AddSingleton(serviceProvider =>
             {
-                //var configuration = serviceProvider.GetService<IConfiguration>();
+                var configuration = serviceProvider.GetService<IConfiguration>();
                 var dynamoServiceSettings = configuration.GetSection(nameof(DynamoServiceSettings)).Get<DynamoServiceSettings>();
                 var dynamoDbSettings = configuration.GetSection(nameof(DynamoDbSettings)).Get<DynamoDbSettings>();
                 AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
@@ -53,7 +54,7 @@ namespace MBH.Common.DynamoDB
                    var t= client.DescribeTableAsync(dynamoServiceSettings.TableName).Result;
                     tableExist = true;
                 }
-                catch
+                catch(Exception ex)
                 {
                     tableExist = false;
                 }
