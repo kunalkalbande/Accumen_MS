@@ -1,0 +1,12 @@
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\bin\Debug\net5.0\MBH.Common.deps.json
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\bin\Debug\net5.0\MBH.Common.dll
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\bin\Debug\net5.0\ref\MBH.Common.dll
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\bin\Debug\net5.0\MBH.Common.pdb
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.csprojAssemblyReference.cache
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.AssemblyInfoInputs.cache
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.AssemblyInfo.cs
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.csproj.CoreCompileInputs.cache
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.dll
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\ref\MBH.Common.dll
+E:\POC\Accumen_MS\MBH.Common\src\MBH.Common\obj\Debug\net5.0\MBH.Common.pdb
