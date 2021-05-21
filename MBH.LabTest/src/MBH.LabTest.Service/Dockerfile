@@ -11,7 +11,6 @@ USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj", "MBH.LabTest/src/MBH.LabTest.Service/"]
 COPY . .
 WORKDIR "/src/MBH.LabTest/src/MBH.LabTest.Service"
 RUN dotnet restore "MBH.LabTest.Service.csproj"
