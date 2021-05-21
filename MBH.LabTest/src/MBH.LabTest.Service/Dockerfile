@@ -1,18 +1,20 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-EXPOSE  5000:80
-EXPOSE  5001:443
 WORKDIR /app
+EXPOSE 5000
+
+ENV ASPNETCORE_URLS=http://+:5000
+
+# Creates a non-root user with an explicit UID and adds permission to access the /app folder
+# For more info, please refer to https://aka.ms/vscode-docker-dotnet-configure-containers
+RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
+USER appuser
+
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-ENV ASPNETCORE_URLS=http://localhost:5000;https://localhost:5001;
-ENV ASPNETCORE_HTTPS_PORT=5001;
-ENV ASPNETCORE_Kestrel__Certificates__Default__Password=password123;
-ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/https/mycertificatename.pfx;
-VOLUME [ "C:\Users\tanvik\.aspnet\https\:/app/https/Certificate" ]
-
+COPY ["MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj", "MBH.LabTest/src/MBH.LabTest.Service/"]
 COPY . .
 WORKDIR "/src/MBH.LabTest/src/MBH.LabTest.Service"
-RUN dotnet restore "MBH.LabTest.Service.csproj" 
+RUN dotnet restore "MBH.LabTest.Service.csproj"
 
 RUN dotnet build "MBH.LabTest.Service.csproj" -c Release -o /app/build
 
