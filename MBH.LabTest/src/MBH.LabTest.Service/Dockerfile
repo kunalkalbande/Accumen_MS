@@ -12,7 +12,7 @@ USER appuser
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY . .
-WORKDIR "/$(Build.SourcesDirectory)/MBH.LabTest/src/MBH.LabTest.Service"
+WORKDIR "/home/vsts/work/1/s/MBH.LabTest/src/MBH.LabTest.Service"
 RUN dotnet restore "MBH.LabTest.Service.csproj"
 
 RUN dotnet build "MBH.LabTest.Service.csproj" -c Release -o /app/build
