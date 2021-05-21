@@ -9,7 +9,6 @@ ENV ASPNETCORE_HTTPS_PORT=5001;
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password=password123;
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path=/https/mycertificatename.pfx;
 VOLUME [ "C:\Users\tanvik\.aspnet\https\:/app/https/Certificate" ]
-COPY ["MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj", "MBH.LabTest/src/MBH.LabTest.Service/"]
 
 COPY . .
 WORKDIR "/src/MBH.LabTest/src/MBH.LabTest.Service"
