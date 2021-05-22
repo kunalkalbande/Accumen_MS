@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        buildContext: ../../../
+        buildContext: $(Build.SourcesDirectory)
         dockerfile: '$(Build.SourcesDirectory)/MBH.LabTest/src/MBH.LabTest.Service/Dockerfile'
         tags: |
           $(tag)
