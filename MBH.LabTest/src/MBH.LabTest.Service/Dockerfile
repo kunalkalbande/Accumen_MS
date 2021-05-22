@@ -11,9 +11,9 @@ USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR "/src"
-COPY ["../../../packages", ""]
+
 COPY ["./MBH.LabTest.Service.csproj", ""]
-COPY . .
+COPY . . . . .
 
 RUN dotnet restore "MBH.LabTest.Service.csproj"
 
