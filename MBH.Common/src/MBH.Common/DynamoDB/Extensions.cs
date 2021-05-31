@@ -6,26 +6,50 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MBH.Common.Settings;
 using System;
+using Amazon.Runtime;
+using MBH.Common.Entities;
+using System.Linq;
 
 namespace MBH.Common.DynamoDB
 {
     public static class Extensions
     {
-        public static  IServiceCollection AddDynamo(this IServiceCollection services)
+        public static IServiceCollection AddDynamo(this IServiceCollection services, string tenantName)
         {
-         
+
             services.AddSingleton(serviceProvider =>
             {
                 var configuration = serviceProvider.GetService<IConfiguration>();
                 var dynamoServiceSettings = configuration.GetSection(nameof(DynamoServiceSettings)).Get<DynamoServiceSettings>();
                 var dynamoDbSettings = configuration.GetSection(nameof(DynamoDbSettings)).Get<DynamoDbSettings>();
                 AmazonDynamoDBConfig clientConfig = new AmazonDynamoDBConfig();
+                var tenants = configuration.GetSection("Tenants").Get<List<Tenant>>();
+                var tenant = tenants.Where(t => t.TenantName == tenantName).FirstOrDefault();
                 // Set the endpoint URL
-                clientConfig.ServiceURL = dynamoDbSettings.ConnectionString;
-                AmazonDynamoDBClient client = new AmazonDynamoDBClient(clientConfig);
-                  var request = new CreateTableRequest
+                clientConfig.ServiceURL = tenant.ConnectionString;
+                clientConfig.RegionEndpoint=Amazon.RegionEndpoint.GetBySystemName(tenant.Region);
+                AWSCredentials aWSCredentials=new BasicAWSCredentials(tenant.AccessKey,tenant.SecretKey);
+                AmazonDynamoDBClient client = new AmazonDynamoDBClient(aWSCredentials, clientConfig);
+
+
+                return client;
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddDynamoRepository<T>(this IServiceCollection services, string collectionName, string tenantName)
+            where T : IEntity
+        {
+            services.AddSingleton<IRepository<T>>(serviceProvider =>
+            {
+                AmazonDynamoDBClient client = serviceProvider.GetService<AmazonDynamoDBClient>();
+                var configuration = serviceProvider.GetService<IConfiguration>();
+                var dynamoServiceSettings = configuration.GetSection(nameof(DynamoServiceSettings)).Get<DynamoServiceSettings>();
+
+                var request = new CreateTableRequest
                 {
-                    TableName = dynamoServiceSettings.TableName,
+                    TableName = collectionName,
                     AttributeDefinitions = new List<AttributeDefinition>()
   {
     new AttributeDefinition
@@ -51,30 +75,26 @@ namespace MBH.Common.DynamoDB
                 bool tableExist = false;
                 try
                 {
-                   var t= client.DescribeTableAsync(dynamoServiceSettings.TableName).Result;
+                    var t = client.DescribeTableAsync(collectionName).Result;
                     tableExist = true;
                 }
-                catch(Exception ex)
+                catch
                 {
                     tableExist = false;
                 }
                 if (!tableExist)
                 {
-                    var response =  client.CreateTableAsync(request).Result;
+                    try{
+                    var response = client.CreateTableAsync(request).Result;
+                    }
+                    catch
+                    {
+                        
+                    }
                 }
-                return client;  });
+                DynamoDBContext context = new DynamoDBContext(client);
 
-                return services;
-        }
-
-        public static IServiceCollection AddDynamoRepository<T>(this IServiceCollection services)
-            where T : IEntity
-        {
-            services.AddSingleton<IRepository<T>>(serviceProvider =>
-            {
-                AmazonDynamoDBClient client  = serviceProvider.GetService<AmazonDynamoDBClient>();
-                 DynamoDBContext context = new DynamoDBContext(client);
-                return new DynamoRepository<T>(client, context);
+                return new DynamoRepository<T>(client, context, tenantName);
             });
 
             return services;

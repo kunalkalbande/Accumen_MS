@@ -12,9 +12,11 @@ namespace MBH.Common.MongoDB
         private readonly IMongoCollection<T> dbCollection;
         private readonly FilterDefinitionBuilder<T> filterBuilder = Builders<T>.Filter;
         public string Name {get;set;}
-        public MongoRepository(IMongoDatabase database, string collectionName)
+        public string Type {get;set;}
+        public MongoRepository(IMongoDatabase database, string collectionName,string name)
         {
-            Name="Mongo";
+            Type="Mongo";
+            Name=name;
             dbCollection = database.GetCollection<T>(collectionName);
         }
 

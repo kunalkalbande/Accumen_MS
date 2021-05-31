@@ -11,6 +11,7 @@
         <dependency id="AWSSDK.DynamoDBv2" version="3.7.0.18" exclude="Build,Analyzers" />
         <dependency id="MassTransit.AspNetCore" version="7.1.4" exclude="Build,Analyzers" />
         <dependency id="MassTransit.RabbitMQ" version="7.1.4" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http" version="2.2.2" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.Configuration" version="5.0.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.Configuration.Binder" version="5.0.0" exclude="Build,Analyzers" />
         <dependency id="Microsoft.Extensions.DependencyInjection" version="5.0.1" exclude="Build,Analyzers" />

@@ -5,7 +5,7 @@
   },
   "projects": {
     "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj": {
-      "version": "1.0.0",
+      "version": "1.2.4",
       "restore": {
         "projectUniqueName": "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\MBH.Common.csproj",
         "projectName": "MBH.Common",
@@ -20,6 +20,7 @@
           "E:\\POC\\Accumen_MS\\MBH.Common\\src\\MBH.Common\\NuGet.Config",
           "C:\\Users\\tanvik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,6 +56,10 @@
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[7.1.4, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",

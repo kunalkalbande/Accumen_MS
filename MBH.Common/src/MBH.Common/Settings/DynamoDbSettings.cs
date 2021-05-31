@@ -7,5 +7,6 @@ namespace MBH.Common.Settings
         public int Port { get; init; }
 
         public string ConnectionString => $"http://{Host}:{Port}";
+        
     }
 }

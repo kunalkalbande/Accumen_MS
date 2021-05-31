@@ -14,9 +14,11 @@ namespace MBH.Common.DynamoDB
        private readonly AmazonDynamoDBClient _client;
        private readonly DynamoDBContext _context;
        public string Name {get;set;}
-        public DynamoRepository(AmazonDynamoDBClient client, DynamoDBContext context)
+       public string Type {get;set;}
+        public DynamoRepository(AmazonDynamoDBClient client, DynamoDBContext context,string tenantName)
         {
-            Name="Dynamo";
+            Type="Dynamo";
+            Name=tenantName;
             _client = client;
             _context=context;
         }
@@ -26,9 +28,10 @@ namespace MBH.Common.DynamoDB
             return await _context.ScanAsync<T>(new List<ScanCondition>()).GetNextSetAsync();
         }
 
-        public  Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
+        public async Task<IReadOnlyCollection<T>> GetAllAsync(Expression<Func<T, bool>> filter)
         {
-            return null;
+         return (await _context.ScanAsync<T>(new List<ScanCondition>()).GetNextSetAsync()).FindAll(filter.Compile().Invoke);
+
         }
 
         public async Task<T> GetAsync(Guid id)
@@ -64,9 +67,9 @@ namespace MBH.Common.DynamoDB
              await _context.DeleteAsync<T>(id);
         }
 
-        public Task<T> GetAsync(Expression<Func<T, bool>> filter)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> filter)
         {
-            throw new NotImplementedException();
+             return (await _context.ScanAsync<T>(new List<ScanCondition>()).GetNextSetAsync()).FindLast(filter.Compile().Invoke);
         }
     }
 }

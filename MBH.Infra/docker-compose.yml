@@ -6,7 +6,7 @@ services:
     image: mbhlabtestservice
     build:
       context: .
-      dockerfile: ../MBH.LabTest/src/MBH.LabTest.Service/Dockerfile
+      dockerfile: ../MBH.LabTest/src/MBH.Clinician.Service/Dockerfile
     ports:
       - 5000:80
       - 5001:443

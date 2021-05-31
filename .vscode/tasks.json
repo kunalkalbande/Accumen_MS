@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
+                "${workspaceFolder}/MBH.Application/src/MBH.Application.Service/MBH.Application.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
+                "${workspaceFolder}/MBH.Application/src/MBH.Application.Service/MBH.Application.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
+                "${workspaceFolder}/MBH.Application/src/MBH.Application.Service/MBH.Application.Service.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -47,12 +47,12 @@
             "dockerBuild": {
                 "tag": "accumenms:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/Dockerfile",
+                "dockerfile": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj"
+                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/MBH.Clinician.Service.csproj"
             }
         },
         {
@@ -63,12 +63,12 @@
             ],
             "dockerBuild": {
                 "tag": "accumenms:latest",
-                "dockerfile": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/Dockerfile",
+                "dockerfile": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj"
+                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/MBH.Clinician.Service.csproj"
             }
         },
         {
@@ -81,7 +81,7 @@
                 "os": "Windows"
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj",
+                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/MBH.Clinician.Service.csproj",
                 "enableDebugging": true
             }
         },
@@ -95,7 +95,7 @@
                 "os": "Windows"
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/MBH.LabTest.Service.csproj"
+                "appProject": "${workspaceFolder}/MBH.LabTest/src/MBH.Clinician.Service/MBH.Clinician.Service.csproj"
             }
         }
     ]

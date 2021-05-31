@@ -4,6 +4,8 @@ using MassTransit.Definition;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MBH.Common.Settings;
+using MBH.Common.Contracts;
+using RabbitMQ.Client;
 
 namespace MBH.Common.MassTransit
 {

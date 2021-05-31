@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service/bin/Debug/net5.0/MBH.LabTest.Service.dll",
+            "program": "${workspaceFolder}/MBH.Application/src/MBH.Application.Service/bin/Debug/net5.0/MBH.Application.Service.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/MBH.LabTest/src/MBH.LabTest.Service",
+            "cwd": "${workspaceFolder}/MBH.Application/src/MBH.Application.Service",
             "stopAtEntry": false,
             "serverReadyAction": {
                 "action": "openExternally",
