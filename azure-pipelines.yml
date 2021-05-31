@@ -25,6 +25,6 @@ stages:
       inputs:
         command: build
         buildContext: $(Build.SourcesDirectory)
-        dockerfile: '$(Build.SourcesDirectory)/MBH.LabTest/src/MBH.LabTest.Service/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/MBH.Clinician/src/MBH.Clinician.Service/Dockerfile'
         tags: |
           $(tag)
