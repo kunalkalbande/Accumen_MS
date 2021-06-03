@@ -13,9 +13,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["MBH.Application/src/MBH.Application.Service/MBH.Application.Service.csproj", "MBH.Application/src/MBH.Application.Service/"]
 COPY . .
-RUN dotnet restore "MBH.Application.Service.csproj"
 
 WORKDIR "/src/MBH.Application/src/MBH.Application.Service"
+RUN dotnet restore "MBH.Application.Service.csproj"
 RUN dotnet build "MBH.Application.Service.csproj" -c Release -o /app/build
 
 FROM build AS publish
