@@ -94,7 +94,12 @@ namespace MBH.Application.Service
                     }
                     var serviceSettings = Configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
                     var rabbitMQSettings = Configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
-                    configurator.Host(rabbitMQSettings.Host);
+                    // configurator.Host(rabbitMQSettings.Host);
+                    configurator.Host(new System.Uri(string.Format("amqps://{0}:5671", rabbitMQSettings.Host)), h =>
+                 {
+                     h.Username("admin");
+                     h.Password("Synerzip@2020");
+                 });
                     configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
                 });
             });
