@@ -61,8 +61,11 @@ namespace MBH.Clinician.Service
             //  services.AddMassTransitWithRabbitMq();
             services.AddMassTransit(configure =>
             {
+                 
+                
                 configure.UsingRabbitMq((context, configurator) =>
                 {
+                    
                     configurator.Send<ClinicianItem>(x =>
                     {
                     // use customerType for the routing key
@@ -75,8 +78,16 @@ namespace MBH.Clinician.Service
                     var configuration = context.GetService<IConfiguration>();
                     var serviceSettings = configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
                     var rabbitMQSettings = configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
-                    configurator.Host(rabbitMQSettings.Host);
-                
+                    // configurator.Host(rabbitMQSettings.Host,5671,"/",h=>{
+                    //     h.Username("admin");
+                    //     h.Password("Synerzip@2020");
+            
+                    // });
+                 configurator.Host(new System.Uri(string.Format("amqps://{0}:5671",rabbitMQSettings.Host)), h =>
+                {
+                    h.Username("admin");
+                    h.Password("Synerzip@2020");
+                });
                     configurator.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(serviceSettings.ServiceName, false));
                 });
             });
